@@ -1,0 +1,26 @@
+<%- include("header"); -%>
+  <body>
+    <div class="box" id="heading">
+            <h2><em><%= listTitle %></em></h2>
+    </div>
+      <!-- <li>Buy Food</li>
+      <li>Cook Food</li>
+      <li>Eat the food</li> -->
+<div class="box">
+  <% itemsArr.forEach(function(item){ %>
+<form action="/delete" method="post">
+      <div class="item">
+        <input type="checkbox" name="checkbox" value="<%= item._id %>" onChange="this.form.submit()">
+        <p><%=item.name%></p>
+        <input type="hidden" name="listName" value="<%= listTitle %>"></input>
+      </div>
+</form>
+  <% });%>
+
+<form class="item" action="/" method="post">
+  <input type="text" name="listItem" value="new item" autocomplete="off">
+  <button type="submit" name="list" value="<%= listTitle %>">+</button>
+</form>
+</div>
+
+<%- include("footer"); -%>
